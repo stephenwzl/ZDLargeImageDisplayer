@@ -1,0 +1,342 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		532C75E01F150AE1006E3FF5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 532C75DF1F150AE1006E3FF5 /* main.m */; };
+		532C75E31F150AE1006E3FF5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 532C75E21F150AE1006E3FF5 /* AppDelegate.m */; };
+		532C75E61F150AE1006E3FF5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532C75E51F150AE1006E3FF5 /* ViewController.m */; };
+		532C75E91F150AE1006E3FF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 532C75E71F150AE1006E3FF5 /* Main.storyboard */; };
+		532C75EB1F150AE1006E3FF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 532C75EA1F150AE1006E3FF5 /* Assets.xcassets */; };
+		532C75EE1F150AE1006E3FF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 532C75EC1F150AE1006E3FF5 /* LaunchScreen.storyboard */; };
+		532C75F61F150BCA006E3FF5 /* zelda-map.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 532C75F51F150BCA006E3FF5 /* zelda-map.jpg */; };
+		532C75F91F151709006E3FF5 /* ZDImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 532C75F81F151709006E3FF5 /* ZDImageScrollView.m */; };
+		6C38EFFB1F15F9840063190E /* ZDImageLocalCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6C38EFFA1F15F9840063190E /* ZDImageLocalCache.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		532C75DB1F150AE1006E3FF5 /* ZDImageViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZDImageViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		532C75DF1F150AE1006E3FF5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		532C75E11F150AE1006E3FF5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		532C75E21F150AE1006E3FF5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		532C75E41F150AE1006E3FF5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		532C75E51F150AE1006E3FF5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		532C75E81F150AE1006E3FF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		532C75EA1F150AE1006E3FF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		532C75ED1F150AE1006E3FF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		532C75EF1F150AE1006E3FF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		532C75F51F150BCA006E3FF5 /* zelda-map.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "zelda-map.jpg"; sourceTree = "<group>"; };
+		532C75F71F151709006E3FF5 /* ZDImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDImageScrollView.h; sourceTree = "<group>"; };
+		532C75F81F151709006E3FF5 /* ZDImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDImageScrollView.m; sourceTree = "<group>"; };
+		6C38EFF91F15F9840063190E /* ZDImageLocalCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDImageLocalCache.h; sourceTree = "<group>"; };
+		6C38EFFA1F15F9840063190E /* ZDImageLocalCache.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZDImageLocalCache.mm; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		532C75D81F150AE1006E3FF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		532C75D21F150AE1006E3FF5 = {
+			isa = PBXGroup;
+			children = (
+				532C75DD1F150AE1006E3FF5 /* ZDImageViewer */,
+				532C75DC1F150AE1006E3FF5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		532C75DC1F150AE1006E3FF5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				532C75DB1F150AE1006E3FF5 /* ZDImageViewer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		532C75DD1F150AE1006E3FF5 /* ZDImageViewer */ = {
+			isa = PBXGroup;
+			children = (
+				532C75E11F150AE1006E3FF5 /* AppDelegate.h */,
+				532C75E21F150AE1006E3FF5 /* AppDelegate.m */,
+				532C75E41F150AE1006E3FF5 /* ViewController.h */,
+				532C75E51F150AE1006E3FF5 /* ViewController.m */,
+				532C75F71F151709006E3FF5 /* ZDImageScrollView.h */,
+				532C75F81F151709006E3FF5 /* ZDImageScrollView.m */,
+				532C75E71F150AE1006E3FF5 /* Main.storyboard */,
+				532C75EA1F150AE1006E3FF5 /* Assets.xcassets */,
+				532C75EC1F150AE1006E3FF5 /* LaunchScreen.storyboard */,
+				532C75EF1F150AE1006E3FF5 /* Info.plist */,
+				532C75F51F150BCA006E3FF5 /* zelda-map.jpg */,
+				532C75DE1F150AE1006E3FF5 /* Supporting Files */,
+				6C38EFF91F15F9840063190E /* ZDImageLocalCache.h */,
+				6C38EFFA1F15F9840063190E /* ZDImageLocalCache.mm */,
+			);
+			path = ZDImageViewer;
+			sourceTree = "<group>";
+		};
+		532C75DE1F150AE1006E3FF5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				532C75DF1F150AE1006E3FF5 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		532C75DA1F150AE1006E3FF5 /* ZDImageViewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 532C75F21F150AE1006E3FF5 /* Build configuration list for PBXNativeTarget "ZDImageViewer" */;
+			buildPhases = (
+				532C75D71F150AE1006E3FF5 /* Sources */,
+				532C75D81F150AE1006E3FF5 /* Frameworks */,
+				532C75D91F150AE1006E3FF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZDImageViewer;
+			productName = ZDImageViewer;
+			productReference = 532C75DB1F150AE1006E3FF5 /* ZDImageViewer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		532C75D31F150AE1006E3FF5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = stephenw.cc;
+				TargetAttributes = {
+					532C75DA1F150AE1006E3FF5 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = U854V67D62;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 532C75D61F150AE1006E3FF5 /* Build configuration list for PBXProject "ZDImageViewer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 532C75D21F150AE1006E3FF5;
+			productRefGroup = 532C75DC1F150AE1006E3FF5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				532C75DA1F150AE1006E3FF5 /* ZDImageViewer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		532C75D91F150AE1006E3FF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				532C75F61F150BCA006E3FF5 /* zelda-map.jpg in Resources */,
+				532C75EE1F150AE1006E3FF5 /* LaunchScreen.storyboard in Resources */,
+				532C75EB1F150AE1006E3FF5 /* Assets.xcassets in Resources */,
+				532C75E91F150AE1006E3FF5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		532C75D71F150AE1006E3FF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				532C75E61F150AE1006E3FF5 /* ViewController.m in Sources */,
+				532C75F91F151709006E3FF5 /* ZDImageScrollView.m in Sources */,
+				532C75E31F150AE1006E3FF5 /* AppDelegate.m in Sources */,
+				532C75E01F150AE1006E3FF5 /* main.m in Sources */,
+				6C38EFFB1F15F9840063190E /* ZDImageLocalCache.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		532C75E71F150AE1006E3FF5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				532C75E81F150AE1006E3FF5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		532C75EC1F150AE1006E3FF5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				532C75ED1F150AE1006E3FF5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		532C75F01F150AE1006E3FF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		532C75F11F150AE1006E3FF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		532C75F31F150AE1006E3FF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = U854V67D62;
+				INFOPLIST_FILE = ZDImageViewer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.stephenw..ZDImageViewer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Debug;
+		};
+		532C75F41F150AE1006E3FF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = U854V67D62;
+				INFOPLIST_FILE = ZDImageViewer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.stephenw..ZDImageViewer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		532C75D61F150AE1006E3FF5 /* Build configuration list for PBXProject "ZDImageViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				532C75F01F150AE1006E3FF5 /* Debug */,
+				532C75F11F150AE1006E3FF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		532C75F21F150AE1006E3FF5 /* Build configuration list for PBXNativeTarget "ZDImageViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				532C75F31F150AE1006E3FF5 /* Debug */,
+				532C75F41F150AE1006E3FF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 532C75D31F150AE1006E3FF5 /* Project object */;
+}
