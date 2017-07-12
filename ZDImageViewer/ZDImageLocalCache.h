@@ -16,5 +16,6 @@
 
 - (void)setImage:(UIImage *)image forKey:(NSString *)key;
 - (UIImage *)getImageForKey:(NSString *)key;
+- (void)clearCurrentLocalCache;
 
 @end

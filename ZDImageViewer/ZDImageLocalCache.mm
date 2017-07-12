@@ -162,6 +162,12 @@ static NSCache *memCache;
   _localCachePath = path.copy;
 }
 
+- (void)clearCurrentLocalCache {
+  if (self.localCachePath) {
+    [[NSFileManager defaultManager] removeItemAtPath:self.localCachePath error:NULL];
+  }
+}
+
 #pragma mark - NSCacheDelegate
 - (void)cache:(NSCache *)cache willEvictObject:(id)obj {
   ZDImageCacheObjectWrapper *imageWrapper = obj;
