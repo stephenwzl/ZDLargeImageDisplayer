@@ -74,7 +74,7 @@ public:
       detach(node);
       attach(node);
       return node->data;
-    } else{// 如果cache中没有，返回NULL
+    } else{
       return T();
     }
   }
