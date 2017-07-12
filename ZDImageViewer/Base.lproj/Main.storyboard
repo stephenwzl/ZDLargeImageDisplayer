@@ -20,8 +20,45 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Xo-Oh-aJl" userLabel="loadingView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t9f-q1-TD8">
+                                        <rect key="frame" x="112" y="331" width="150" height="4"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="GVX-Wd-Tvf"/>
+                                            <constraint firstAttribute="height" constant="4" id="dzf-Rm-BNv"/>
+                                        </constraints>
+                                    </progressView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kau-e9-50R">
+                                        <rect key="frame" x="159.5" y="343" width="56" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Kau-e9-50R" firstAttribute="top" secondItem="t9f-q1-TD8" secondAttribute="bottom" constant="8" id="5qw-u2-zBt"/>
+                                    <constraint firstItem="Kau-e9-50R" firstAttribute="centerX" secondItem="2Xo-Oh-aJl" secondAttribute="centerX" id="JZa-mn-kff"/>
+                                    <constraint firstItem="t9f-q1-TD8" firstAttribute="centerX" secondItem="2Xo-Oh-aJl" secondAttribute="centerX" id="PID-aS-LZQ"/>
+                                    <constraint firstItem="t9f-q1-TD8" firstAttribute="centerY" secondItem="2Xo-Oh-aJl" secondAttribute="centerY" id="YZq-jl-aJK"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2Xo-Oh-aJl" secondAttribute="bottom" id="PJH-xW-hSx"/>
+                            <constraint firstItem="2Xo-Oh-aJl" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ip6-uG-vaA"/>
+                            <constraint firstAttribute="trailing" secondItem="2Xo-Oh-aJl" secondAttribute="trailing" id="mQ7-OX-gF6"/>
+                            <constraint firstItem="2Xo-Oh-aJl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qSb-ow-KWQ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loadingView" destination="2Xo-Oh-aJl" id="quH-aG-zl5"/>
+                        <outlet property="progressView" destination="t9f-q1-TD8" id="Doq-8m-zdW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

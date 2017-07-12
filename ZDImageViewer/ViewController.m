@@ -12,6 +12,8 @@
 @interface ViewController ()
 
 @property (nonatomic, strong) ZDImageScrollView *imageScrollView;
+@property (weak, nonatomic) IBOutlet UIView *loadingView;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 
 @end
 
@@ -21,6 +23,19 @@
   [super viewDidLoad];
   _imageScrollView = [[ZDImageScrollView alloc] initWithLocalImageName:@"zelda-map" viewFrame:[UIScreen mainScreen].bounds];
   [self.view addSubview:_imageScrollView];
+  [self.view bringSubviewToFront:self.loadingView];
+  __weak typeof(self) weakSelf = self;
+  [ZDImageScrollView setFirstLoadingProgressCallBack:^ (CGFloat progress, BOOL done){
+    weakSelf.progressView.progress = progress;
+    if (done) {
+      weakSelf.loadingView.hidden = YES;
+    }
+  }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [_imageScrollView setZoomScale:_imageScrollView.minimumZoomScale animated:NO];
 }
 
 

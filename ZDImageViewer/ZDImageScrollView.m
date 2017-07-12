@@ -18,6 +18,37 @@
 
 static const CGFloat kDefaultTileBaseLength = 256.f;
 
+
+static NSInteger firstLoadingCount = 0;
+static NSInteger firstLoadingTotalCount = 0;
+static BOOL isFirstLoading = NO;
+static void(^globalFirstLoadinProgressCallBack)(CGFloat progress, BOOL);
+static dispatch_semaphore_t lock;
+static inline void setFirstLoadingCount(NSInteger count) {
+  if (!isFirstLoading) {
+    return;
+  }
+  dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+  firstLoadingCount = count;
+  if (globalFirstLoadinProgressCallBack) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+      globalFirstLoadinProgressCallBack((CGFloat)count / (CGFloat)firstLoadingTotalCount, count == firstLoadingTotalCount);
+    });
+  }
+  if (count == firstLoadingTotalCount) {
+    isFirstLoading = NO;
+  }
+  dispatch_semaphore_signal(lock);
+}
+
+static inline void setFirstLoadingTotalCount(NSInteger count) {
+  dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+  firstLoadingTotalCount = count;
+  dispatch_semaphore_signal(lock);
+}
+
+
+
 #pragma mark - MAIN IMPLEMENTATION
 @interface ZDImageScrollView () <ZDImageDisplayerBitMapDelegate, UIScrollViewDelegate>
 
@@ -30,6 +61,11 @@ static const CGFloat kDefaultTileBaseLength = 256.f;
 
 - (instancetype)initWithLocalImageName:(NSString *)imageName viewFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+      lock = dispatch_semaphore_create(1);
+      isFirstLoading = YES;
+    });
     NSString *path = [[NSBundle mainBundle] pathForResource:imageName ofType:@"jpg"];
     _rawImage = [[UIImage alloc] initWithContentsOfFile:path];
     CGFloat scale = [UIScreen mainScreen].scale;
@@ -43,9 +79,7 @@ static const CGFloat kDefaultTileBaseLength = 256.f;
     self.maximumZoomScale = 1.f;
     CGSize viewSize = self.bounds.size;
     self.minimumZoomScale = MIN(viewSize.width / _rawImageSize.width, viewSize.height / _rawImageSize.height);
-    _imageDisplayer.numberOfZoomLevels = 2;
-    //initialize cache
-    [[ZDImageLocalCache sharedCache] setLocalCachePath:imageName];
+    _imageDisplayer.numberOfZoomLevels = 3;
   }
   return self;
 }
@@ -67,26 +101,21 @@ static const CGFloat kDefaultTileBaseLength = 256.f;
                                                 yInSourceImage,
                                                 tileResolutionSize.width / scale,
                                                 tileResolutionSize.height / scale);
-  NSString *cacheKey = [NSString stringWithFormat:@"row_%@_col_%@_scale_%@", @(row).stringValue, @(column).stringValue, @(scale).stringValue];
-  UIImage *imageInCache = [[ZDImageLocalCache sharedCache] getImageForKey:cacheKey];
-  if (imageInCache) {
-    return imageInCache;
-  }
   /// most iOS device are RGB color space
   CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-  int bytePerRow = BYTES_PER_PIXEL * tileResolutionSize.width / scale;
-  void *bitmapDataBuffer = malloc(bytePerRow * tileResolutionSize.height / scale);
-  NSAssert(bitmapDataBuffer != NULL, @"can't allocate enough buffer space for bitmap create");
-  CGContextRef tileContext = CGBitmapContextCreate(bitmapDataBuffer,
-                                                   (tileResolutionSize.width / scale),
-                                                   (tileResolutionSize.height / scale),
-                                                   8, bytePerRow, colorSpace,
-                                                   kCGImageAlphaPremultipliedLast);
+//  int bytePerRow = BYTES_PER_PIXEL * tileResolutionSize.width / scale;
+//  void *bitmapDataBuffer = malloc(bytePerRow * tileResolutionSize.height / scale);
+//  NSAssert(bitmapDataBuffer != NULL, @"can't allocate enough buffer space for bitmap create");
+  CGContextRef tileContext = CGBitmapContextCreate(NULL,
+                                                   CGRectGetWidth(tileRectInSourceImageRect),
+                                                   CGRectGetHeight(tileRectInSourceImageRect),
+                                                   8, 0, colorSpace,
+                                                   kCGBitmapByteOrder32Host | kCGImageAlphaNoneSkipFirst);
   NSAssert(tileContext != NULL, @"can't create tile bitmap context");
   CGColorSpaceRelease(colorSpace);
   /// flip the coordinate
-  CGContextTranslateCTM( tileContext, 0.0f, tileResolutionSize.height / scale );
-  CGContextScaleCTM( tileContext, 1.0f, -1.0f );
+//  CGContextTranslateCTM( tileContext, 0.0f, tileResolutionSize.height / scale );
+//  CGContextScaleCTM( tileContext, 1.0f, -1.0f );
   
   CGImageRef tileImageRef = CGImageCreateWithImageInRect(self.rawImage.CGImage, tileRectInSourceImageRect);
   NSAssert(tileImageRef != NULL, @"current tile range: %@", NSStringFromCGRect(tileRectInSourceImageRect));
@@ -94,13 +123,18 @@ static const CGFloat kDefaultTileBaseLength = 256.f;
   CGContextDrawImage(tileContext, tileRectInSourceImageRect, tileImageRef);
   CGImageRelease(tileImageRef);
   tileImageRef = CGBitmapContextCreateImage(tileContext);
-  UIImage *tileImage = [UIImage imageWithCGImage:tileImageRef scale:1.f orientation:UIImageOrientationDownMirrored];
+  UIImage *tileImage = [UIImage imageWithCGImage:tileImageRef scale:1.f orientation:UIImageOrientationUp];
   CGImageRelease(tileImageRef);
   CGContextRelease(tileContext);
-  free(bitmapDataBuffer);
-  //store to cache
-  [[ZDImageLocalCache sharedCache] setImage:tileImage forKey:cacheKey];
   return tileImage;
+}
+
++ (void)setFirstLoadingProgressCallBack:(void (^)(CGFloat, BOOL))firstLoadingProgressCallBack {
+  globalFirstLoadinProgressCallBack = [firstLoadingProgressCallBack copy];
+}
+
++ (void (^)(CGFloat, BOOL))firstLoadingProgressCallBack {
+  return globalFirstLoadinProgressCallBack;
 }
 
 @end
@@ -113,7 +147,7 @@ static const CGFloat kDefaultTileBaseLength = 256.f;
 @implementation ZDTiledLayer
 
 + (CFTimeInterval)fadeDuration {
-  return 0.01f;
+  return 0.f;
 }
 
 @end
@@ -140,14 +174,19 @@ static const CGFloat kDefaultTileBaseLength = 256.f;
 }
 
 - (void)drawRect:(CGRect)rect {
+  if (isFirstLoading && firstLoadingTotalCount == 0 && firstLoadingCount == 0) {
+    NSInteger count = (NSInteger)round(CGRectGetWidth(self.bounds) / CGRectGetWidth(rect)) * (NSInteger)round(CGRectGetHeight(self.bounds) / CGRectGetHeight(rect));
+    setFirstLoadingTotalCount(count);
+  }
   CGContextRef ctx = UIGraphicsGetCurrentContext();
   CGFloat scale = CGContextGetCTM(ctx).a / self.tiledLayer.contentsScale;
   
-  NSInteger col = (NSInteger)((CGRectGetMinX(rect) * scale) / kDefaultTileBaseLength);
-  NSInteger row = (NSInteger)((CGRectGetMinY(rect) * scale) / kDefaultTileBaseLength);
+  NSInteger col = (NSInteger)round((CGRectGetMinX(rect) * scale) / kDefaultTileBaseLength);
+  NSInteger row = (NSInteger)round((CGRectGetMinY(rect) * scale) / kDefaultTileBaseLength);
   
   UIImage *tileImage = [self.delegate imageDisplayer:self imageForRow:row column:col scale:scale];
   [tileImage drawInRect:rect];
+  setFirstLoadingCount(firstLoadingCount + 1);
 }
 
 #pragma mark - getter

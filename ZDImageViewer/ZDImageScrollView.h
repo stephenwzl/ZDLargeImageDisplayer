@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZDImageScrollView : UIScrollView
 
 @property (nonatomic, readonly) CGSize rawImageSize;
+@property (nonatomic, class) void(^firstLoadingProgressCallBack)(CGFloat, BOOL);
 /**
  init with image name in main bundle
  

@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "ZDImageLocalCache.h"
 
 @interface AppDelegate ()
 
@@ -45,7 +44,6 @@
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-  [[ZDImageLocalCache sharedCache] clearCurrentLocalCache];
 }
 
 
