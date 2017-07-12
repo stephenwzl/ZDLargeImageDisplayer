@@ -18,7 +18,6 @@
 
 static const CGFloat kDefaultTileBaseLength = 256.f;
 
-
 static NSInteger firstLoadingCount = 0;
 static NSInteger firstLoadingTotalCount = 0;
 static BOOL isFirstLoading = NO;
@@ -103,9 +102,6 @@ static inline void setFirstLoadingTotalCount(NSInteger count) {
                                                 tileResolutionSize.height / scale);
   /// most iOS device are RGB color space
   CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-//  int bytePerRow = BYTES_PER_PIXEL * tileResolutionSize.width / scale;
-//  void *bitmapDataBuffer = malloc(bytePerRow * tileResolutionSize.height / scale);
-//  NSAssert(bitmapDataBuffer != NULL, @"can't allocate enough buffer space for bitmap create");
   CGContextRef tileContext = CGBitmapContextCreate(NULL,
                                                    CGRectGetWidth(tileRectInSourceImageRect),
                                                    CGRectGetHeight(tileRectInSourceImageRect),
@@ -113,9 +109,6 @@ static inline void setFirstLoadingTotalCount(NSInteger count) {
                                                    kCGBitmapByteOrder32Host | kCGImageAlphaNoneSkipFirst);
   NSAssert(tileContext != NULL, @"can't create tile bitmap context");
   CGColorSpaceRelease(colorSpace);
-  /// flip the coordinate
-//  CGContextTranslateCTM( tileContext, 0.0f, tileResolutionSize.height / scale );
-//  CGContextScaleCTM( tileContext, 1.0f, -1.0f );
   
   CGImageRef tileImageRef = CGImageCreateWithImageInRect(self.rawImage.CGImage, tileRectInSourceImageRect);
   NSAssert(tileImageRef != NULL, @"current tile range: %@", NSStringFromCGRect(tileRectInSourceImageRect));
